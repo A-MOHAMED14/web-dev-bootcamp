@@ -1,0 +1,34 @@
+CSS POSITIONING
+
+
+Static Position:
+This is the default positioning for all elements.
+Elements with static positioning are positioned in the normal flow of the document.
+They're not affected by the top, right, bottom, or left properties.
+
+
+Relative Position:
+Relative positioning moves an element relative to its normal position.
+When you use relative positioning, you can use top, right, bottom, and left properties to offset the element from its normal position.
+Other elements on the page still treat the element as if it were in its original position, so there may be space left for it.
+
+
+Absolute Position:
+Absolute positioning removes the element from the normal document flow.
+It positions the element relative to its closest positioned ancestor, if one exists; otherwise, it positions it relative to the initial containing block (usually the viewport).
+Absolute positioned elements are not affected by other elements, and they can overlap other elements.
+If there's no positioned ancestor, the element will be positioned relative to the document.
+
+
+Fixed Position:
+Fixed positioning is similar to absolute positioning but positions the element relative to the viewport (the browser window).
+Elements with fixed positioning stay in the same place even when the page is scrolled.
+They're often used for elements like headers or navigation bars that you want to stay visible as the user scrolls down the page.
+
+
+In summary:
+
+Static: Normal document flow, no special positioning.
+Relative: Moves an element relative to its normal position.
+Absolute: Removes the element from the normal flow and positions it relative to its closest positioned ancestor or the document.
+Fixed: Positions the element relative to the viewport, so it stays in the same place even when 
