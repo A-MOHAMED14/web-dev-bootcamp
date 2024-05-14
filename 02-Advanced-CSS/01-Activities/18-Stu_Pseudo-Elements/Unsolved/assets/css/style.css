@@ -60,8 +60,47 @@ article p {
 }
 
 /* TODO: Style the term/phrase - underline, black text, grab cursor */
+.tooltip-1 {
+  position: relative;
+  text-decoration: underline;
+  cursor: grab;
+  color: black;
+}
 
-/* TODO: Position tooltip above the term/phrase, same color as header and nav links, no border-radius, smaller font size */
+.tooltip-1:hover::after {
+  content: "HTML is the standard markup language for creating Web pages.";
+  position: absolute;
+  left: 0px;
+  bottom: 25px;
+  min-width: 250px;
+  background-color: rgb(22, 22, 70);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  border-radius: 6px;
+  z-index: 1;
+}
+
+.tooltip-2 {
+  position: relative;
+  text-decoration: underline;
+  cursor: grab;
+  color: black;
+}
+
+.tooltip-2:hover::after {
+  content: "A website is often divided into headers, menus, content and a footer.";
+  position: absolute;
+  left: 0px;
+  bottom: 25px;
+  min-width: 250px;
+  background-color: rgb(22, 22, 70);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  border-radius: 6px;
+  z-index: 1;
+}
 
 aside {
   width: 25%;
