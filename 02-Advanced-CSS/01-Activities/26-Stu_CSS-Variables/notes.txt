@@ -1,0 +1,14 @@
+The :root pseudo-class in CSS is used to target the highest-level element in the document, which is usually the <html> element.
+
+Its primary purpose is for defining global CSS variables (also known as CSS custom properties) that can be used throughout the entire document. These variables are stored in the :root selector and can then be accessed and used within other CSS rules.
+
+
+:root {
+  --primary-color: #007bff;
+  --font-size: 16px;
+}
+
+body {
+  font-size: var(--font-size);
+  color: var(--primary-color);
+}
