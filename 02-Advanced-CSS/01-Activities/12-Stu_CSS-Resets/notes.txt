@@ -1,0 +1,10 @@
+What are CSS Resets?
+
+
+CSS resets are stylesheets used to reset the default styles applied by web browsers to HTML elements. They are used to ensure consistency in the appearance of web pages across different browsers by removing or resetting the default styling.
+
+In simple terms, CSS resets undo browser-specific styles, making all HTML elements look the same across different browsers. This allows developers to start with a clean slate and apply their own styles without worrying about browser inconsistencies.
+
+
+
+CSS resets essentially remove or reset all CSS styles applied to HTML elements, ensuring that the web pages look the same across different browsers by resetting them to their default styles. This helps to eliminate browser inconsistencies and provides a consistent starting point for applying custom styles.
