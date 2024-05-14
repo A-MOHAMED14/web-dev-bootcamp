@@ -15,8 +15,8 @@ header {
 }
 
 /* 
-What happens when we set the display property to flex? 
-TODO: Write your answer here 
+Q: What happens when we set the display property to flex? 
+A: The container becomes a flex container and its children become flex items enabling a flexible layout and easy alignment of the flex items. 
 */
 nav {
   display: flex;
@@ -31,8 +31,8 @@ nav a {
 }
 
 /* 
-What is the flex-wrap property? 
-TODO: Write your answer here 
+Q: What is the flex-wrap property? 
+A: It is a property in Flexbox that controls whether the flex items are forced onto a single line or can wrap onto multiple lines within the flex container when they cannot fit in one line.
 */
 main {
   display: flex;
@@ -55,8 +55,8 @@ footer {
 }
 
 /* 
-What does the justify-content property do? 
-TODO: Write your answer here 
+Q: What does the justify-content property do? 
+A: Align flex items along the main axis of the flex container (in this case, the flex items are the cards).
 */
 .products {
   flex: 4;
@@ -68,9 +68,11 @@ TODO: Write your answer here
 }
 
 /* 
-What is the flex property a shorthand property for?
-What is it doing here? 
-TODO: Write your answer here 
+Q: What is the flex property a shorthand property for?
+A: flex-grow : flex-shrink : flex-basis
+
+Q:What is it doing here? 
+A: Sets grow & shrink to 0, therefore, the cards are not growable or shrinkable. Also sets the intial length of the card to 400px.
 */
 .card {
   border-style: solid;
@@ -93,9 +95,11 @@ TODO: Write your answer here
 }
 
 /* 
-What does the flex-direction property define?
-What is it doing here? 
-TODO: Write your answer here 
+Q: What does the flex-direction property define?
+A: Defines the main axis and the direction in which flex items are laid out in a flex container.
+
+Q: What is it doing here?
+A: Setting the flex-direction of the flex-items within the flex-containers main & nav to column. Consequently, the flex-items will be laid out in a column, stacking vertically on yop of each other, rather than in a row.
 */
 @media screen and (max-width: 768px) {
   main,
