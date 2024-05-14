@@ -29,7 +29,7 @@ nav ul {
 }
 
 nav a {
-  color: #b9C6ae;
+  color: #b9c6ae;
   font-weight: bold;
   text-decoration: none;
 }
@@ -85,7 +85,10 @@ button {
   cursor: pointer;
 }
 
-/* What does this CSS rule do and what does moz and webkit represent? */
+/*
+Q: What does this CSS rule do and what does moz and webkit represent? 
+A: Replaces the original image with a new image
+*/
 select {
   /* -moz-appearance: none;
   -webkit-appearance: none; */
@@ -101,23 +104,32 @@ select {
   max-width: 100%;
 }
 
-.text-input, select {
+.text-input,
+select {
   padding: 1%;
   outline: none;
-  border: 1.2px solid #b9C6ae;
+  border: 1.2px solid #b9c6ae;
 }
 
-.text-input:hover, .checkbox:hover, 
-select:hover, button:hover {
+.text-input:hover,
+.checkbox:hover,
+select:hover,
+button:hover {
   box-shadow: 0 0 5px #999;
 }
 
-/* What does this pseudo-class mean? */
+/* 
+Q: What does this pseudo-class mean? 
+A: Styles an element when it gains focus, usually when it's clicked on. In this case the text-inputs right border changes when it's clicked on.
+*/
 .text-input:focus {
   border-right-width: 5px;
 }
 
-/* What does this pseudo-class mean? */
+/* 
+Q: What does this pseudo-class mean?
+A: Styles the borders with dashed lines when it's placeholder text is showing. 
+*/
 .text-input:placeholder-shown {
   border-style: dashed;
 }
@@ -136,13 +148,19 @@ select:hover, button:hover {
   margin-right: 2%;
 }
 
-/* What does this selector do? */
+/* 
+Q: What does this selector do? 
+A: The adjacents elements font style & color changes once the current element is checked. 
+*/
 .checkbox:checked + label {
   color: #999999;
   font-style: italic;
 }
 
-/* What does this selector do? */
+/* 
+Q: What does this selector do? 
+A: The adjacent element inserts some text at the end once the current element is checked.
+*/
 .checkbox:checked + label::after {
   margin-left: 10px;
   font-size: 90%;
