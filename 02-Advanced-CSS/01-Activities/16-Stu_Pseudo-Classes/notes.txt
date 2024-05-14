@@ -1,0 +1,7 @@
+Pseudo-classes
+
+Pseudo-classes in CSS are special keywords that are used to define the state or behavior of an element. They allow you to style elements based on conditions that cannot be targeted with regular selectors.
+
+In very simple terms, pseudo-classes are like extra instructions you can give to specific elements. For example, you can style links differently when a user hovers over them (:hover), or when they have been visited (:visited).
+
+Pseudo-classes help you add interactivity and style to your webpage without needing additional JavaScript or HTML markup.
