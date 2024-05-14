@@ -1,0 +1,7 @@
+Pseudo-elements
+
+Pseudo-elements allow you to target very specific parts of an element's content, more specific than just targeting the element itself.
+
+For example, you can target the first letter of a paragraph with ::first-letter, or the first line with ::first-line. You can also add content before or after an element with ::before and ::after.
+
+So, pseudo-elements are like fine-tuning tools that let you apply styles to specific parts of an element's content, making your CSS more precise and flexible.
