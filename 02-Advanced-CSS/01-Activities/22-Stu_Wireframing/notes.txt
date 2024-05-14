@@ -1,0 +1,5 @@
+Wireframing
+
+Wireframing is the process of creating a basic outline or blueprint of a webpage or website before any actual design or development work begins. It usually involves sketching or creating simple mockups that represent the layout, structure, and content of the page.
+
+Wireframes typically focus on the placement of elements such as navigation menus, content sections, images, and other important components, without worrying about colors, fonts, or other design details. They help designers and developers plan the structure and flow of a website, ensuring that the final product meets the needs of users and stakeholders.
