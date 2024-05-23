@@ -12,5 +12,5 @@ console.log(planets);
 var galaxy = constellations.concat(planets);
 console.log(galaxy);
 
-var captial = star.toUpperCase("polaris");
+var captial = star.toUpperCase();
 console.log(captial);
