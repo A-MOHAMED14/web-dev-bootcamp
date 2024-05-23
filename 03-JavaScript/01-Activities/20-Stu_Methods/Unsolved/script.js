@@ -6,4 +6,5 @@ var star = "polaris";
 constellations.unshift("Canis Major");
 console.log(constellations);
 
-
+planets.pop();
+console.log(planets);
