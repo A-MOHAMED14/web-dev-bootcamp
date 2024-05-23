@@ -8,3 +8,6 @@ console.log(constellations);
 
 planets.pop();
 console.log(planets);
+
+const galaxy = constellations.concat(planets);
+console.log(galaxy);
