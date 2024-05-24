@@ -21,3 +21,16 @@ site3El.children[1].children[0].setAttribute("alt", "women working");
 site3El.children[1].children[0].setAttribute("style", "padding:10px;");
 
 // Write Your Code Below
+var h4Elements = document.querySelectorAll("h4")
+console.log(h4Elements, "<-----")
+
+//Change color, increase font size, make font bold, add padding, remove padding
+h4Elements.forEach((h4Element) => {
+    h4Element.style.color = "blue"
+    h4Element.style.fontSize = "30px"
+    h4Element.style.fontWeight = "bold"
+    h4Element.style.padding = "0 0 0 10px"
+    h4Element.style.margin = "0px"
+})
+
+
