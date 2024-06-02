@@ -2,7 +2,7 @@
 // Assume `num` will be a positive number
 
 var logEvenNums = function (num) {
-  for (let i = 0; i < num; i++) {
+  for (let i = 0; i <= num; i++) {
     if (i % 2 === 0) {
       console.log(i);
     }
