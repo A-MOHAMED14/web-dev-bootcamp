@@ -3,8 +3,8 @@ var issueContainerEl = document.querySelector('#issues-container');
 var limitWarningEl = document.querySelector('#limit-warning');
 
 var getRepoName = function () {
-  // Where is this value coming from?
-  // TODO: Write your answer here
+  // Q: Where is this value coming from?
+  // A: From the URL
   var queryString = document.location.search;
   var repoName = queryString.split('=')[1];
 
@@ -13,8 +13,8 @@ var getRepoName = function () {
 
     getRepoIssues(repoName);
   } else {
-    // Under what condition will this run?
-    // TODO: Write your answer here
+    // Q: Under what condition will this run?
+    // A: If the repository name does not exist
     document.location.replace('./index.html');
   }
 };
@@ -27,8 +27,8 @@ var getRepoIssues = function (repo) {
       response.json().then(function (data) {
         displayIssues(data);
 
-        // What is this checking for? Under what condition will this be `true`?
-        // TODO: Write your answer here
+        // Q: What is this checking for? Under what condition will this be `true`?
+        // A: Since GitHub only returns 30 results at a time, we check to see if there's more than 30 by looking for a next page URL in the response headers. server
         if (response.headers.get('Link')) {
           displayWarning(repo);
         }
@@ -40,8 +40,8 @@ var getRepoIssues = function (repo) {
 };
 
 var displayIssues = function (issues) {
-  // Is there a difference between this and `!issues.length`?
-  // TODO: Write your answer here
+  // Q: Is there a difference between this and `!issues.length`?
+  // A: No, they both check if there are repos with issues, but just use different methods 
   if (issues.length === 0) {
     issueContainerEl.textContent = 'This repo has no open issues!';
     return;
@@ -71,8 +71,8 @@ var displayIssues = function (issues) {
   }
 };
 
-// What does this function do?
-// TODO: Write your answer here
+// Q: What does this function do?
+// A: When there are more issues than what GitHub has returned, we let the user know by printing a message with a link to the page.
 var displayWarning = function (repo) {
   limitWarningEl.textContent = 'To see more than 30 issues, visit ';
 
@@ -81,8 +81,8 @@ var displayWarning = function (repo) {
   linkEl.setAttribute('href', 'https://github.com/' + repo + '/issues');
   linkEl.setAttribute('target', '_blank');
 
-  // Where does this appear on the page?
-  // TODO: Write your answer here
+  // Q: Where does this appear on the page?
+  // A: Bottom of the page
   limitWarningEl.appendChild(linkEl);
 };
 
