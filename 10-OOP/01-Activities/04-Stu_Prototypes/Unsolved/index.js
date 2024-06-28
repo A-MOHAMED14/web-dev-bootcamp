@@ -1,4 +1,6 @@
 // TODO: Add a comment describing what kind of function this is
+// A constructor function
+// Constructor functions create objects which share the same properties and methods
 function BlogPost(authorName, title, text, createdOn) {
   this.authorName = authorName;
   this.title = title;
@@ -11,18 +13,20 @@ function BlogPost(authorName, title, text, createdOn) {
 }
 
 // TODO: Add a comment describing the purpose of `.prototype` in this method declaration
-BlogPost.prototype.addComment = function(comment) {
+// The prototype property allows the addComment method to be added to the BlogPost constructor function
+BlogPost.prototype.addComment = function (comment) {
   this.comments.push(comment);
 };
 
 const post = new BlogPost(
-  'John Doe',
-  'My Second Post',
-  'Cats are super cute!',
-  '12/16/2021'
+  "John Doe",
+  "My Second Post",
+  "Cats are super cute!",
+  "12/16/2021"
 );
 
-post.addComment('Nice post, I like it!');
+post.addComment("Nice post, I like it!");
 
 // TODO: Add a comment describing what you expect to see printed in the console
+//['Nice post, I like it!]
 console.log(post.comments);
