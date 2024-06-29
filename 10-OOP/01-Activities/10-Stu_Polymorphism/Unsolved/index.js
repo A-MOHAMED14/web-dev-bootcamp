@@ -28,18 +28,22 @@ class Comment extends ForumItem {
     super(authorName, createdOn);
     this.text = text;
   }
+
+  // Overide the inherited method, to apply a different implementation for instances of the Comment class constructor only.
+
+  printMetaData() {
+    console.log(
+      `Created by ${this.authorName} on ${this.createdOn}. ${this.text}`
+    );
+  }
 }
 
-const newPost = new BlogPost(
-  'John Doe',
-  'My Fourth Post',
-  '12/19/2021'
-);
+const newPost = new BlogPost("John Doe", "My Fourth Post", "12/19/2021");
 
 const newComment = new Comment(
-  'Jane Doe',
-  '12/20/2021',
-  'This post is really awesome!',
+  "Jane Doe",
+  "12/20/2021",
+  "This post is really awesome!"
 );
 
 newPost.printMetaData();
