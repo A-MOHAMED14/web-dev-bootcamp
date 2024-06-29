@@ -5,26 +5,10 @@ Validate.prototype.isPassword = (password) => {
     return false;
   }
 
-  const characters = password.split("");
+  const pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$");
 
-  for (let i = 0; i < characters.length; i++) {
-    const upperCase = characters.find(
-      (character) => character[i] === character[i].toUpperCase()
-    );
-
-    const lowerCase = characters.find(
-      (character) => character[i] === character[i].toLowerCase()
-    );
-
-    const number = characters.find(
-      (character) => typeof parseInt(character[i]) === "number"
-    );
-
-    if (upperCase && lowerCase && number) {
-      console.log(upperCase, lowerCase, number, "<======");
-      console.log(typeof upperCase, typeof lowerCase, typeof number, "<-----");
-      return true;
-    }
+  if (pattern.test(password)) {
+    return true;
   }
 
   return false;

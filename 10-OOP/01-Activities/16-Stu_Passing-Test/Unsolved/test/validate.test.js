@@ -43,7 +43,7 @@ describe("Validate", () => {
   });
   // TODO: Write a test that checks if isPassword() returns true when the password is at least 8 characters long and contains an uppercase, lowercase, and number.
   describe("correct", () => {
-    it.only("Should return true if password contains atleast one uppercase, lowercase, number and is at least 8 characters long", () => {
+    it("Should return true if password contains atleast one uppercase, lowercase, number and is at least 8 characters long", () => {
       const expected = true;
       const passwordCheck = new Validate();
       const actual = passwordCheck.isPassword("helloWorld1");
