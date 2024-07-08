@@ -13,3 +13,5 @@ CREATE TABLE produce (
   name VARCHAR(100)
 );
 
+INSERT INTO biographies (id, name)
+VALUES (1, 'Robert');
