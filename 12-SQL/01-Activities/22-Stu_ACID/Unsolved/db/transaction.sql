@@ -22,7 +22,8 @@ CREATE TABLE authors (
 );
 
 -- TODO: Add a transaction block here
-
+DO $$
+BEGIN
 INSERT INTO books (book_id, book_name)
 VALUES
     (1, 'Pride and Prejudice'),
@@ -33,3 +34,11 @@ INSERT INTO authors (author_id, author_name)
 VALUES
     (10, 'Jane Austen'),
     (11, 'Harper Lee');
+
+    RAISE NOTICE 'Database transaction successfully completed';
+
+    EXCEPTION
+    WHEN OTHERS THEN 
+    RAISE NOTICE 'Database transaction failed: %', SQLERRM;
+    ROLLBACK;
+END $$;
