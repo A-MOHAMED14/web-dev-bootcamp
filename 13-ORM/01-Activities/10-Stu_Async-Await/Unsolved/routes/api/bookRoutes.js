@@ -40,7 +40,7 @@ router.delete("/:book_id", async (req, res) => {
       },
     });
 
-    res.json(deletedBook);
+    res.json(bookData);
   } catch (err) {
     res.json(err);
   }
