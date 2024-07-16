@@ -1,13 +1,22 @@
-const router = require('express').Router();
-const sequelize = require('../../config/connection');
-const { Reader, Book, LibraryCard } = require('../../models');
+const router = require("express").Router();
+const sequelize = require("../../config/connection");
+const { Reader, Book, LibraryCard } = require("../../models");
 
 // GET all readers
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const readerData = await Reader.findAll({
       include: [{ model: LibraryCard }, { model: Book }],
       // TODO: Add a sequelize literal to get a count of short books
+      attributes: {
+        include: [
+          [
+            sequelize.literal(
+              '(SELECT COUNT(pages) FROM book WHERE pages BETWEEN 100 AND 300 AND book.reader_id = reader.id)'
+            ), 'shortBooks'
+          ],
+        ],
+      },
     });
     res.status(200).json(readerData);
   } catch (err) {
@@ -16,15 +25,24 @@ router.get('/', async (req, res) => {
 });
 
 // GET a single reader
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const readerData = await Reader.findByPk(req.params.id, {
       include: [{ model: LibraryCard }, { model: Book }],
       // TODO: Add a sequelize literal to get a count of short books
+      attributes: {
+        include: [
+          [
+            sequelize.literal(
+              '(SELECT COUNT(pages) FROM book WHERE pages BETWEEN 100 AND 300 AND book.reader_id = reader.id)'
+            ), 'shortBooks'
+          ],
+        ],
+      },
     });
 
     if (!readerData) {
-      res.status(404).json({ message: 'No reader found with that id!' });
+      res.status(404).json({ message: "No reader found with that id!" });
       return;
     }
 
@@ -35,7 +53,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // CREATE a reader
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const readerData = await Reader.create(req.body);
     res.status(200).json(readerData);
@@ -45,7 +63,7 @@ router.post('/', async (req, res) => {
 });
 
 // DELETE a reader
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const readerData = await Reader.destroy({
       where: {
@@ -54,7 +72,7 @@ router.delete('/:id', async (req, res) => {
     });
 
     if (!readerData) {
-      res.status(404).json({ message: 'No reader found with that id!' });
+      res.status(404).json({ message: "No reader found with that id!" });
       return;
     }
 
