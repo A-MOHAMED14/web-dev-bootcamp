@@ -38,6 +38,7 @@ router.post('/', async (req, res) => {
   try {
     const locationData = await LibraryCard.create({
       // TODO: Add a comment describing where the value of `req.body.reader_id` comes from
+      // It comes from the id field of the Readers model, which is a referenced PRIMARY KEY column 
       reader_id: req.body.reader_id,
     });
     res.status(200).json(locationData);
