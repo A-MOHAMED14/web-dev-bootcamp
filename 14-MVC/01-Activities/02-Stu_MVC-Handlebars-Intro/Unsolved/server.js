@@ -9,7 +9,9 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // TODO: Describe what the following two lines of code are doing.
+// Registers handlebars as the template engine for the Express app. 
 app.engine('handlebars', hbs.engine);
+// Sets handlebars as the default view engine for the Express app.
 app.set('view engine', 'handlebars');
 
 app.use(express.static(path.join(__dirname, 'public')));
