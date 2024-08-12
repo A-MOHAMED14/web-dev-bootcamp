@@ -3,4 +3,13 @@
 // Return the common number
 // You may not use the `indexOf` or `includes` method
 
-var commonElement = function(arrA, arrB) {};
+const commonElement = function (arrA, arrB) {
+  for (let i = 0; i < arrA.length; i++) {
+    const numA = arrA[i];
+    for (let j = 0; j < arrB.length; j++) {
+      const numB = arrB[j];
+
+      if (numA === numB) return numA;
+    }
+  }
+};
