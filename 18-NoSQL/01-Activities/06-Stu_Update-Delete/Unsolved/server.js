@@ -54,7 +54,7 @@ app.get('/read', (req, res) => {
 app.delete("/destroy", (req, res) => {
   const bookId = new ObjectId(req.body.id)
   db.collection("bookCollection").deleteOne({_id: bookId})
-  .then((results) => res.send(results.delectedCount ? "Document Deleted" : "No Document Found")) 
+  .then((results) => res.send(results.deletedCount ? "Document Deleted" : "No Document Found")) 
   .catch((err) => {
     if (err) throw err
   })
