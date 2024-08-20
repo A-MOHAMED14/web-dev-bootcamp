@@ -50,6 +50,9 @@ app.use(express.json());
 app.get('/read', (req, res) => {
   db.collection('numberList')
     .find()
+    .sort({number: -1})
+    .limit(5)
+    .skip(5)
     .toArray()
     .then(results => res.send(results))
     .catch(err => {
