@@ -23,6 +23,8 @@ module.exports = {
     }
   },
   // TODO: Add comments to the functionality of the createApplication method
+  // Creates an instance of the Application model
+  // ObjectId of new document is added to the applications subdocument within the User model
   async createApplication(req, res) {
     try {
       const application = await Application.create(req.body);
@@ -45,6 +47,10 @@ module.exports = {
     }
   },
   // TODO: Add comments to the functionality of the updateApplication method
+  // Document needing updating is filtered using it's _id
+  // $set operator only updates the fields included in the request body
+  // Before saving the changes to the database, runValidators option ensures the updated document meets the validations of the applicationSchema 
+  // Lastly, new option set to true returns the updated document
   async updateApplication(req, res) {
     try {
       const application = await Application.findOneAndUpdate(
@@ -63,7 +69,10 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // TODO: Add comments to the functionality of the deleteApplication method
+  // TODO: Add comments to the functionality of the delete Application method
+  // findOneAndRemove method deletes a single document specified by it's _id
+  // User document is updated in order to remove the ObjectId in it's applications subdocument which is still pointing/referecing a deleted application document 
+  // $pull operator removes the deleted ObjectId from the applications subdocument
   async deleteApplication(req, res) {
     try {
       const application = await Application.findOneAndRemove({ _id: req.params.applicationId });
@@ -90,6 +99,7 @@ module.exports = {
     }
   },
   // TODO: Add comments to the functionality of the addTag method
+  // Adds a tag subdocument to an application. The entire body of the tag is added rather than it's ObjectId. 
   async addTag(req, res) {
     try {
       const application = await Application.findOneAndUpdate(
@@ -108,6 +118,8 @@ module.exports = {
     }
   },
   // TODO: Add comments to the functionality of the addTag method
+  // Removes a tag subdocument from an application.   
+  // This method finds the application based on ID. It then updates the tags array associated with the app in question by removing it's tagId from the tags array.
   async removeTag(req, res) {
     try {
       const application = await Application.findOneAndUpdate(
