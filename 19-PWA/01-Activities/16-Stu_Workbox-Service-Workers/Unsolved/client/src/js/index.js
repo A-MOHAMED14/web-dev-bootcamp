@@ -12,6 +12,6 @@ document.getElementById('box').src = Yellow;
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-      .register('./sw.js')
+      .register('./service-worker.js')
       .then((register) => console.log(register));
   }
