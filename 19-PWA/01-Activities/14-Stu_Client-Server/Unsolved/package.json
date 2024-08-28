@@ -18,8 +18,8 @@
     "concurrently": "^5.2.0"
   },
   "comments": {
-    "comment-start:dev": "TODO: Add your comment about start:dev script inside these quotes",
-    "comment-concurrently": "TODO: Add your comment about concurrently inside these quotes"
+    "comment-start:dev": "start:dev script uses concurrently to start client and server apps at same time",
+    "comment-concurrently": "Concurrently is installed as a dev-dependency, allowing a developer to use a signle script to simultaneously run the client and the server"
   }
 }
 
