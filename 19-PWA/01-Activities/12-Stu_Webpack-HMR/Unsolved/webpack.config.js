@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+const { devServer } = require('../../11-Ins_Webpack-HMR/webpack.config');
 
 module.exports = {
   mode: 'development',
@@ -10,6 +11,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   // TODO: Add devServer object
+  devServer: {
+    hot: "only"
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
