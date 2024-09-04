@@ -1,6 +1,7 @@
 // TODO: Add a comment explaining what is being passed to this "child" component as props
 
 function CardBody(props) {
+  console.log("****", props);
   return (
     <div className="card-body">
       <p className="card-text">Click Count: {props.count}</p>
@@ -10,7 +11,7 @@ function CardBody(props) {
         onClick={props.handleIncrement}
       >
         Increment
-      </button>{' '}
+      </button>{" "}
       <button
         type="button"
         className="btn btn-danger"
