@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 // Todo: Bring in the required component from 'react-router-dom' for linking between pages
-import {  } from 'react-router-dom';
-import Profile from '../components/UI/ProfileSections/ProfileTeaser';
-import ListItem from '../components/UI/ListItem';
+import { Link } from "react-router-dom";
+import Profile from "../components/UI/ProfileSections/ProfileTeaser";
+import ListItem from "../components/UI/ListItem";
 
-import API from '../utils/API';
+import API from "../utils/API";
 
 export default function HomePage() {
   // Prior to the return statement, our homepage uses a few react hooks and fetchData function to query to a mock database and retrieve random user data
@@ -29,7 +29,7 @@ export default function HomePage() {
             <Profile user={user} />
             {/* Todo: Update this link component's to prop so that the user can click to see a single user's profile */}
             <Link
-              to={}
+              to={`/Profile/${user.id}`}
               className="badge bg-primary rounded-pill"
             >
               See More
