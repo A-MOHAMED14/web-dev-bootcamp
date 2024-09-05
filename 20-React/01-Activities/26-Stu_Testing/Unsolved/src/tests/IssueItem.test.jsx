@@ -24,5 +24,9 @@ describe("IssueItem", () => {
   });
 
   // TODO: render the IssueItem component and format the rendered HTML with the pretty package before saving it as an snapshot.
-  it("should match snapshot", () => {});
+  it("should match snapshot", () => {
+    render(<IssueItem key={issue.id} issue={issue} />);
+
+    expect(pretty(document.querySelector(".item").innerHTML)).toMatchSnapshot();
+  });
 });
