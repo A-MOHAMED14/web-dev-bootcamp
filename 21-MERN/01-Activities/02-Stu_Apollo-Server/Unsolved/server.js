@@ -1,9 +1,11 @@
 const express = require('express');
 // TODO: Add a comment describing the functionality of this expression
+// Requires in the Appolo server class
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 
 // TODO: Add a comment describing the functionality of this expression
+// Requires in the two parts of the GraphQL schema
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
@@ -16,6 +18,7 @@ const server = new ApolloServer({
 const app = express();
 
 // TODO: Add a comment describing the functionality of this async function
+// Creates a new instance of the Apollo server uisng the GrpahQL schema
 const startApolloServer = async () => {
   await server.start();
   
@@ -33,4 +36,5 @@ const startApolloServer = async () => {
 };
 
 // TODO: Add a comment describing this functionality
+// Invokes the async function to start the server
 startApolloServer();
