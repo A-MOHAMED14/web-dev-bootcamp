@@ -1,29 +1,30 @@
-import { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import { useState } from "react";
+import { useMutation } from "@apollo/client";
 
-import { ADD_COMMENT } from '../../utils/mutations';
-import { QUERY_THOUGHTS } from '../../utils/queries';
+import { ADD_COMMENT } from "../../utils/mutations";
+import { QUERY_THOUGHTS } from "../../utils/queries";
 
 // TODO: Comments are not being added to the database the way we expect, and an error is shown on form submit
 const CommentForm = ({ thoughtId }) => {
-  const [commentText, setCommentText] = useState('');
+  const [commentText, setCommentText] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
-  const { addComment, loading, error } = useMutation(ADD_COMMENT, {
-    variables: { thoughtId, commentText },
-    refetchQueries: [
-      QUERY_THOUGHTS,
-      'getThoughts'
-    ]
+  const [addComment, { error }] = useMutation(ADD_COMMENT, {
+    refetchQueries: [QUERY_THOUGHTS, "getThoughts"],
   });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { data } = await addComment();
+      const { data } = await addComment({
+        variables: {
+          thoughtId,
+          commentText,
+        },
+      });
 
-      setCommentText('');
+      setCommentText("");
       setCharacterCount(0);
     } catch (err) {
       console.error(err);
@@ -33,7 +34,7 @@ const CommentForm = ({ thoughtId }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'commentText' && value.length <= 280) {
+    if (name === "commentText" && value.length <= 280) {
       setCommentText(value);
       setCharacterCount(value.length);
     }
@@ -44,7 +45,7 @@ const CommentForm = ({ thoughtId }) => {
       <h4>What are your thoughts on this thought?</h4>
       <p
         className={`m-0 ${
-          characterCount === 280 || error ? 'text-danger' : ''
+          characterCount === 280 || error ? "text-danger" : ""
         }`}
       >
         Character Count: {characterCount}/280
@@ -60,7 +61,7 @@ const CommentForm = ({ thoughtId }) => {
             placeholder="Add your comment..."
             value={commentText}
             className="form-input w-100"
-            style={{ lineHeight: '1.5' }}
+            style={{ lineHeight: "1.5" }}
             onChange={handleChange}
           ></textarea>
         </div>
