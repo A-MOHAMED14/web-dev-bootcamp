@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 
 import { ADD_THOUGHT } from '../../utils/mutations';
-import { QUERY_PROFILES } from '../../utils/queries';
+import { QUERY_PROFILES, QUERY_THOUGHTS } from '../../utils/queries';
 
 const ThoughtForm = () => {
   const [formState, setFormState] = useState({
@@ -13,11 +13,12 @@ const ThoughtForm = () => {
 
   // Set up our mutation with an option to handle errors
   // TODO: Add comment describing the functionality of the useMutation second argument & refetchQueries property
+  // After adding a thought, the refetchQueries property tells Apollo to refresh (refetch) the QUERY_THOUGHTS to get and display the latest list of thoughts. 
   const [addThought, { error }] = useMutation
   (ADD_THOUGHT, {
     refetchQueries: [
-      QUERY_PROFILES,
-      'allProfiles'
+      QUERY_THOUGHTS,
+      'getThoughts'
     ]
   });
 
@@ -32,6 +33,7 @@ const ThoughtForm = () => {
       });
 
       // TODO: Add a comment describing why we no longer need to reload the page
+      // The refetchQueries property will get and display the latest list of thoughts. All we need to do here is clear the form
       setCharacterCount(0);
       setFormState({
         thoughtText: '',
