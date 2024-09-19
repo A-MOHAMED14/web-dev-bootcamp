@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext } from "react";
 
 // Initialize new context for students
 const StudentContext = createContext();
@@ -11,13 +11,24 @@ export const StudentProvider = ({ children }) => {
   const initialState = {
     students: [
       // TODO: Add two students with a `name`, `major` and `id` property
+      {
+        name: "William",
+        major: "Computer Science",
+        id: 1,
+      },
+      {
+        name: "Mikel",
+        major: "Psychology",
+        id: 2,
+      },
     ],
   };
 
   // TODO: Fill in the value prop for the provider
   return (
-    <StudentContext.Provider value={}>
+    <StudentContext.Provider value={initialState}>
       {/* //TODO: Render the children from props */}
+      {children}
     </StudentContext.Provider>
   );
 };
