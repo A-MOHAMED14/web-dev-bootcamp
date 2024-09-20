@@ -1,22 +1,27 @@
-import { useState } from 'react';
+import { useState } from "react";
 // TODO: Add code to import necessary hook from Apollo Client
+import { useMutation } from "apollo/client";
 
-import { ADD_THOUGHT } from '../../utils/mutations';
+import { ADD_THOUGHT } from "../../utils/mutations";
 
 const ThoughtForm = () => {
   const [formState, setFormState] = useState({
-    thoughtText: '',
-    thoughtAuthor: '',
+    thoughtText: "",
+    thoughtAuthor: "",
   });
   const [characterCount, setCharacterCount] = useState(0);
 
   // TODO: Add code to set up mutation
+  const [addThought, { error }] = useMutation(ADD_THOUGHT);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
       // TODO: Add code to execute asynchronous mutation function returned by `useMutation()` hook and pass in `formState` object
+      const { data } = await addThought({
+        variables: { ...formState },
+      });
 
       window.location.reload();
     } catch (err) {
@@ -27,10 +32,10 @@ const ThoughtForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'thoughtText' && value.length <= 280) {
+    if (name === "thoughtText" && value.length <= 280) {
       setFormState({ ...formState, [name]: value });
       setCharacterCount(value.length);
-    } else if (name !== 'thoughtText') {
+    } else if (name !== "thoughtText") {
       setFormState({ ...formState, [name]: value });
     }
   };
@@ -41,7 +46,7 @@ const ThoughtForm = () => {
 
       <p
         className={`m-0 ${
-          characterCount === 280 || error ? 'text-danger' : ''
+          characterCount === 280 || error ? "text-danger" : ""
         }`}
       >
         Character Count: {characterCount}/280
