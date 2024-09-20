@@ -1,18 +1,18 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import { ADD_STUDENT, REMOVE_STUDENT, ADD_MAJOR } from '../utils/actions';
+import { ADD_STUDENT, REMOVE_STUDENT, ADD_MAJOR } from "../utils/actions";
 
-import { useStudentContext } from '../utils/StudentContext';
+import { useStudentContext } from "../utils/StudentContext";
 
 export default function StudentList() {
   const [state, dispatch] = useStudentContext();
 
-  const [newStudentName, setNewStudentName] = useState('');
-  const [newStudentMajor, setNewStudentMajor] = useState('');
+  const [newStudentName, setNewStudentName] = useState("");
+  const [newStudentMajor, setNewStudentMajor] = useState("");
 
   // TODO: Add a comment explaining what this state variable will be used for after reviewing it's use in the app
-  // Your comment here
-  const [newMajorName, setNewMajorName] = useState('');
+  // Local state variable that will be used to hold the new major before it gets dispatched to the reducer
+  const [newMajorName, setNewMajorName] = useState("");
 
   return (
     <div>
@@ -39,9 +39,11 @@ export default function StudentList() {
                       <button
                         type="button"
                         onClick={() => {
-                          console.log('StudentList.js: Dispatched remove!');
+                          console.log("StudentList.js: Dispatched remove!");
                           // TODO: Add a comment explaining the functionality of the REMOVE_STUDENT action when it hits the reducer
-                          // Your comment here
+                          // takes a student ID as payload
+                          // finds student based on ID and removes the targeted student via filter() method
+                          // updates student array
                           return dispatch({
                             type: REMOVE_STUDENT,
                             payload: student.id,
@@ -58,18 +60,18 @@ export default function StudentList() {
               </tbody>
             </table>
 
-            <form 
+            <form
               className="add-student"
               onSubmit={(e) => {
                 e.preventDefault();
-                console.log('StudentList.js: Dispatched add student! ');
+                console.log("StudentList.js: Dispatched add student! ");
                 dispatch({
                   type: ADD_STUDENT,
                   payload: { name: newStudentName, major: newStudentMajor },
                 });
 
-                setNewStudentName('');
-                setNewStudentMajor('');
+                setNewStudentName("");
+                setNewStudentMajor("");
               }}
             >
               <input
@@ -85,7 +87,7 @@ export default function StudentList() {
               >
                 <option>Choose major...</option>
                 {/* //TODO: Add a commenting explaining what will happen if a major is added to the "Majors" array */}
-                {/* Your comment here */}
+                {/* The Majors array in the global state will update and newly added major will be reflected on the view when component is re-rendered */}
                 {state.majors.map((major) => (
                   <option key={major} value={major}>
                     {major}
@@ -93,38 +95,36 @@ export default function StudentList() {
                 ))}
               </select>
               {console.log(state.majors)}
-              <button type="submit">
-                Add Student
-              </button>
+              <button type="submit">Add Student</button>
             </form>
             <h3>Add a New Major</h3>
-            <form 
+            <form
               className="add-major"
               onSubmit={(e) => {
                 e.preventDefault();
-                console.log('StudentList.js: Dispatched add major! ');
+                console.log("StudentList.js: Dispatched add major! ");
                 // TODO: Explain what happens when the ADD_MAJOR action is dispatched to the reducer with a new major
-                // Your comment here
+                // takes a string as name of new major to be added
+                // pushes new major to end of copy of majors array
+                // updates majors array
                 dispatch({
                   type: ADD_MAJOR,
                   payload: newMajorName,
                 });
 
-                setNewMajorName('');
+                setNewMajorName("");
               }}
             >
               {/* //TODO: Does the setNewMajorName method affect local state or global state the way it is used in this onChange event */}
-              {/* Your comment here */}
+              {/* Local state, as it is using a useSate react hook */}
               <input
                 value={newMajorName}
                 onChange={(e) => setNewMajorName(e.target.value)}
                 placeholder="New major name..."
                 type="text"
-                style={{ padding: '10px', marginRight: '5px' }}
+                style={{ padding: "10px", marginRight: "5px" }}
               />
-              <button type="submit">
-                Add Major
-              </button>
+              <button type="submit">Add Major</button>
             </form>
           </section>
         </>
