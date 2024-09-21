@@ -10,7 +10,7 @@ import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import './style.css';
 
 // TODO: Add a comment describing the functionality of loadStripe
-// Your comment here
+// The loadStripe function initialises Stripe using the provided API key
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Cart = () => {
@@ -18,7 +18,7 @@ const Cart = () => {
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   // TODO: Add a comment describing the functionality of the useEffect hook in this instance
-  // Your comment here
+  // In this instance, the useEffect hook checks if there is data available. If there is, it uses the stripePromise to redirect the user to the Stripe checkout page with the session ID from the received data.
   useEffect(() => {
     if (data) {
       stripePromise.then((res) => {
@@ -28,7 +28,7 @@ const Cart = () => {
   }, [data]);
 
   // TODO: Add a comment describing what data we are watching and what work should be preformed if that data changes
-  // Your comment here
+  // The useEffect hook watches the cart's length, and if it's 0, it calls getCart() to retrieve data from IndexedDB. Once the data is retrieved, it dispatches the ADD_MULTIPLE_TO_CART action to update the cart state with that data.
   useEffect(() => {
     async function getCart() {
       const cart = await idbPromise('cart', 'get');
@@ -53,7 +53,7 @@ const Cart = () => {
   }
 
   // TODO: Add a comment describing the functionality of our submitCheckout function.
-  // Your comment here
+  // The submitCheckout() function calls getCheckout(), passing the cart data from the global state to create a checkout session.
   function submitCheckout() {
     getCheckout({
       variables: { 
