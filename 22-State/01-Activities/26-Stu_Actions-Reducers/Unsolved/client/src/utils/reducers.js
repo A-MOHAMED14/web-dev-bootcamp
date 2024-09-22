@@ -8,13 +8,13 @@ import {
   UPDATE_CURRENT_CATEGORY,
   CLEAR_CART,
   TOGGLE_CART,
-} from './actions';
+} from "./actions";
 
 // TODO: To get a better understand of how a reducer works - add comments to the various actions in the reducer
 export const reducer = (state, action) => {
   switch (action.type) {
     // TODO: Add a comment describing the functionality of the UPDATE_PRODUCTS case
-    // Your comment here
+    // The UPDATE_PRODUCTS case updates the products array by accessing the products from the action object and returns the updated state.
     case UPDATE_PRODUCTS:
       return {
         ...state,
@@ -34,7 +34,7 @@ export const reducer = (state, action) => {
         cart: [...state.cart, ...action.products],
       };
     // TODO: Add a comment describing the functionality of the UPDATE_CART_QUANTITY case
-    // Your comment here
+    // The UPDATE_CART_QUANTITY case sets cartOpen to true, updates the purchase quantity of the product with the matching _id, and returns the updated state.
     case UPDATE_CART_QUANTITY:
       return {
         ...state,
@@ -48,7 +48,7 @@ export const reducer = (state, action) => {
       };
 
     // TODO: Add a comment describing the functionality of the REMOVE_FROM_CART case
-    // Your comment here
+    // The REMOVE_FROM_CART case filters the cart array, removing the product with the matching _id and returning the updated cart state.
     case REMOVE_FROM_CART:
       let newState = state.cart.filter((product) => {
         return product._id !== action._id;
@@ -86,7 +86,7 @@ export const reducer = (state, action) => {
       };
 
     // TODO: Add a comment describing what the default case is for
-    // Your comment here
+    // The default case returns the current state when no other case matches the action type.
     default:
       return state;
   }
