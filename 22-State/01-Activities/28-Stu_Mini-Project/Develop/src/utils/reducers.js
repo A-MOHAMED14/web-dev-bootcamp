@@ -1,7 +1,26 @@
-import { ADD_CAR, START_CAR, STOP_CAR } from './actions';
-import createId from './createId';
+import { ADD_CAR, START_CAR, STOP_CAR } from "./actions";
+import createId from "./createId";
 
-export default function reducer(state, action) {
+const initialState = {
+  cars: [
+    {
+      id: 1,
+      make: "Honda",
+      model: "Civic",
+      year: "2008",
+      isRunning: false,
+    },
+    {
+      id: 2,
+      make: "Tesla",
+      model: "Y",
+      year: "2021",
+      isRunning: false,
+    },
+  ],
+};
+
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case ADD_CAR: {
       const newCarId = createId(state.cars);
